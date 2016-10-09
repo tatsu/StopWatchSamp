@@ -1,16 +1,80 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11535.1" systemVersion="16A323" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch42" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11055"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11523"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="StopWatchSamp_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label alignment="center" text="00:00.00" id="XBz-mi-UrJ">
+                            <fontDescription key="font" type="system" pointSize="20"/>
+                        </label>
+                        <group width="1" alignment="center" id="89v-Gw-SUa">
+                            <items>
+                                <button width="0.5" alignment="left" verticalAlignment="bottom" title="Start" id="H1Q-9m-pET">
+                                    <connections>
+                                        <action selector="onStartButtonPressed" destination="AgC-eL-Hgc" id="zFd-FH-rXi"/>
+                                    </connections>
+                                </button>
+                                <button width="0.5" alignment="left" hidden="YES" title="Stop" id="mce-pR-PFG">
+                                    <connections>
+                                        <action selector="onStopButtonPressed" destination="AgC-eL-Hgc" id="KeI-Bb-qOi"/>
+                                    </connections>
+                                </button>
+                                <button width="0.5" alignment="left" title="Reset" id="dup-Pf-JGr">
+                                    <connections>
+                                        <action selector="onResetButtonPressed" destination="AgC-eL-Hgc" id="mbm-4l-BbD"/>
+                                    </connections>
+                                </button>
+                                <button width="0.5" alignment="left" hidden="YES" title="Lap" id="1bk-8o-SvI">
+                                    <connections>
+                                        <action selector="onLapButtonPressed" destination="AgC-eL-Hgc" id="Acl-SZ-wlf"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <separator alignment="left" id="9CS-wM-DDm"/>
+                        <table alignment="left" id="Ofv-Ku-9JD">
+                            <items>
+                                <tableRow identifier="lapTimeRow" selectable="NO" id="obf-lC-ghC" customClass="LapTimeRowController" customModule="StopWatchSamp_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="Hn0-dO-AWb">
+                                        <items>
+                                            <label alignment="left" text="Lap" id="E7P-TS-Hpi">
+                                                <fontDescription key="font" type="system" pointSize="16"/>
+                                            </label>
+                                            <label alignment="left" id="cNV-Ih-eKK"/>
+                                            <label alignment="right" text="00:00.00" id="lK7-6N-AHd">
+                                                <fontDescription key="font" type="system" pointSize="16"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="lapLabel" destination="lK7-6N-AHd" id="tS3-bQ-Tlv"/>
+                                        <outlet property="lapNoLabel" destination="cNV-Ih-eKK" id="qXU-Yz-CCY"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="lapButton" destination="1bk-8o-SvI" id="o02-BN-M4P"/>
+                        <outlet property="lapTable" destination="Ofv-Ku-9JD" id="hiq-mk-3cn"/>
+                        <outlet property="resetButton" destination="dup-Pf-JGr" id="fuL-Rh-KiY"/>
+                        <outlet property="startButton" destination="H1Q-9m-pET" id="Irw-aL-a0t"/>
+                        <outlet property="stopButton" destination="mce-pR-PFG" id="80b-tK-k9l"/>
+                        <outlet property="stopWatchLabel" destination="XBz-mi-UrJ" id="3Pr-Fe-q3g"/>
+                    </connections>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="219.69230769230771" y="344.79487179487182"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -31,7 +95,7 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="StopWatchSamp_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>
